@@ -32,6 +32,10 @@ Every number on the page lives in one of two files, each with the paper table or
 
 [docs/DATA.md](docs/DATA.md) lists the source of each figure. Do not type a figure into a component. Add it to the data file with its source.
 
+## Live site
+
+The page is published at https://warfarisk.com from this repository with GitHub Pages. Every push to `main` builds and deploys it. See [docs/DEPLOY.md](docs/DEPLOY.md) for how the domain is set up.
+
 ## Getting started
 
 You need [Bun](https://bun.sh) (the lockfile is `bun.lock`).
@@ -65,8 +69,9 @@ src/
   data/numbers.ts    every figure from the papers, with its source
   lib/               small helpers: hooks, status wording, smooth anchor scrolling
   styles.css         tokens and all styles
-public/              partner logos
-docs/                data sources, research notes, README screenshots
+public/              partner logos and the CNAME file for the custom domain
+.github/             the Pages deploy workflow, issue and pull request templates
+docs/                data sources, deploy guide, research notes, README screenshots
 ```
 
 ## Design rules in short

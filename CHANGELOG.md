@@ -2,6 +2,17 @@
 
 All notable changes to the landing page are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- GitHub Pages deployment on every push to `main`, with the custom domain warfarisk.com.
+- A deploy guide in `docs/DEPLOY.md`.
+
+### Removed
+
+- The saved screenshots of third-party websites, so the repository can be public.
+
 ## [0.1.0] - 2026-11-17
 
 First release.
