@@ -194,6 +194,7 @@ ol {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   min-height: 44px;
   padding: 10px 20px;
   border: 1.5px solid transparent;
@@ -215,11 +216,11 @@ ol {
 }
 
 .btn-icon {
-  margin-right: 8px;
+  margin-right: 0;
 }
 
 .btn-icon-down {
-  margin: 0 0 0 8px;
+  margin: 0;
 }
 
 .button:hover .btn-icon-down {
@@ -3329,5 +3330,51 @@ ol {
   .footer-links a .icon,
   .footer-top > .icon {
     display: none;
+  }
+}
+
+/* Phone polish: tighter section spacing, even hero tabs, centred bridge line */
+
+@media (max-width: 559px) {
+  .section {
+    padding-block: 3rem;
+  }
+
+  .section-tight {
+    padding-block: 2.25rem;
+  }
+
+  .problem {
+    padding-block: 2.5rem;
+  }
+
+  .center-head {
+    margin-bottom: 24px;
+  }
+
+  .seg-track {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+
+  .seg-thumb {
+    display: none;
+  }
+
+  .seg-track label.is-on {
+    background: var(--surface);
+    box-shadow: 0 1px 3px rgba(28, 21, 24, 0.18);
+  }
+
+  .bridge {
+    margin-top: 32px;
+    padding-top: 24px;
+    text-align: center;
+    font-size: 1.25rem;
+  }
+
+  .case-btn {
+    padding: 8px 6px;
+    font-size: 0.875rem;
   }
 }
