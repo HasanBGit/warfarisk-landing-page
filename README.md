@@ -4,8 +4,6 @@ A one-page site that explains two open papers on warfarin dose prediction and le
 
 > **Research prototype. Not tested in patients and not for clinical use.** The dose and range shown here come from a model trained on public research data. They must not be used to make dosing decisions.
 
-![Hero on a desktop screen](docs/screenshots/hero-desktop.png)
-
 ## What the page shows
 
 | Section | What it does |
@@ -18,10 +16,6 @@ A one-page site that explains two open papers on warfarin dose prediction and le
 | Why a dose comes out as it does | Which inputs push the dose up or down, and how that changes for patients labelled Black. |
 | Try it | A three-screen demo (Patient, Dose, Why) with four fixed examples. |
 | Papers | Links to the two papers. |
-
-![Group coverage chart](docs/screenshots/coverage-desktop.png)
-
-![The Dose screen of the demo](docs/screenshots/demo-desktop.png)
 
 ## Where the numbers come from
 
@@ -71,7 +65,7 @@ src/
   styles.css         tokens and all styles
 public/              partner logos and the CNAME file for the custom domain
 .github/             the Pages deploy workflow, issue and pull request templates
-docs/                data sources, deploy guide, research notes, README screenshots
+docs/                data sources, deploy guide, research notes
 ```
 
 ## Design rules in short
@@ -87,11 +81,6 @@ The full list is in [CONTRIBUTING.md](CONTRIBUTING.md).
 ## Phones
 
 Everything on the desktop page is on the phone too, laid out for a narrow screen. The nine steps become a swipeable deck, long explanations sit behind a tap, and the two charts are regrouped so they stay readable. The 3D pillbox is shown on phones too, with the flat version as the fallback when WebGL or motion is not available.
-
-<p>
-  <img src="docs/screenshots/hero-phone.png" alt="Hero on a phone" width="260">
-  <img src="docs/screenshots/steps-phone.png" alt="The nine steps as a swipeable deck on a phone" width="260">
-</p>
 
 ## Accessibility
 
