@@ -1,0 +1,21 @@
+# Changelog
+
+All notable changes to the landing page are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/).
+
+## [0.1.0] - 2026-11-17
+
+First release.
+
+### Added
+
+- Hero with a 3D seven-day pillbox that shows the predicted weekly dose and the 90% range for four example patients, with a flat fallback.
+- Sections for the problem, the nine steps of the careful test, the findings, group coverage, why a dose comes out as it does, and the two papers.
+- Group coverage chart with the paper's 95% intervals, sorted from best to worst and shown with icons as well as colour.
+- Comparison of what the model leans on for all patients and for patients labelled Black.
+- A three-screen demo (Patient, Dose, Why) with four fixed example patients.
+- A phone layout with the same features as the desktop page: a swipeable deck for the nine steps, regrouped charts, and open and close rows for longer text.
+- Smooth, time-capped scrolling for section links and buttons.
+- Hidden accessible tables for the charts, keyboard support for tabs and open and close rows, and reduced-motion support.
+- Source notes for every figure in `src/data/numbers.ts`, and a table of sources in `docs/DATA.md`.
+
+[0.1.0]: https://github.com/HasanBGit/warfarisk-landing-page/releases/tag/v0.1.0
