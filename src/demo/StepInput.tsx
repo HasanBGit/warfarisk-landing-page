@@ -30,6 +30,7 @@ export function StepInput({ c, onNext }: { c: Case; onNext: () => void }) {
   const p = c.patient;
   return (
     <div className="step">
+      <p className="demo-note">Example values, so they cannot be edited. Pick another patient above to see a different result.</p>
       <div className="step-grid">
         <section className="panel">
           <h3>Patient</h3>

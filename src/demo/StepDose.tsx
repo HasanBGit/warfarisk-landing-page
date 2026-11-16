@@ -101,7 +101,7 @@ export function StepDose({ c, busy, onBack, onNext }: { c: Case; busy: boolean; 
         <div>
           <dt>Within 20%</dt>
           <dd>
-            {model.pw20}
+            {(model.pw20 * 100).toFixed(1)}%
             <small>of true dose</small>
           </dd>
         </div>

@@ -588,7 +588,7 @@ ol {
 }
 
 .logos-sm img {
-  height: 44px;
+  height: 56px;
 }
 
 .logos-sm a {
@@ -1959,6 +1959,7 @@ ol {
 }
 
 .app {
+  scroll-margin-top: calc(var(--nav-height) + 12px);
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -2592,8 +2593,8 @@ ol {
 .partner-logo {
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
+  width: 88px;
+  height: 88px;
   overflow: hidden;
   background: #fff;
   border: 1px solid var(--line);
@@ -3371,4 +3372,10 @@ ol {
     padding: 8px 6px;
     font-size: 0.875rem;
   }
+}
+
+.demo-note {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.9375rem;
 }

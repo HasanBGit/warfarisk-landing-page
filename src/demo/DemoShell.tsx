@@ -17,6 +17,7 @@ export function DemoShell() {
   const [dir, setDir] = useState<"fwd" | "back" | "none">("none");
   const [height, setHeight] = useState<number>();
   const inner = useRef<HTMLDivElement>(null);
+  const app = useRef<HTMLDivElement>(null);
   const current = cases.find((c) => c.id === caseId) ?? cases[0];
 
   // Moving to a new screen takes a moment, as the real model does: the dose first, the explanation after.
@@ -51,10 +52,22 @@ export function DemoShell() {
     };
   }, []);
 
+  // A new screen starts at its top. If the button that was pressed sits near the bottom of a tall screen,
+  // the page would otherwise stay put and show the end of the new screen instead of its start.
+  const showTop = () => {
+    const el = app.current;
+    if (!el) return;
+    const nav = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--nav-height")) || 68;
+    if (el.getBoundingClientRect().top >= nav) return;
+    const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({ block: "start", behavior: calm ? "auto" : "smooth" });
+  };
+
   const go = (next: number) => {
     setDir(next > step ? "fwd" : "back");
     setStep(next);
     setBusy(next > 0);
+    showTop();
   };
 
   const pick = (id: string) => {
@@ -62,6 +75,7 @@ export function DemoShell() {
     setCaseId(id);
     setStep(0);
     setBusy(false);
+    showTop();
   };
 
   return (
@@ -74,7 +88,7 @@ export function DemoShell() {
         ))}
       </div>
 
-      <div className="app">
+      <div className="app" ref={app}>
         <div className="app-top">
           <div className="app-brand">
             <Brand size={26} />
