@@ -1,52 +1,48 @@
 # Deploying to warfarisk.com
 
-The site is a static build served by GitHub Pages at https://warfarisk.com.
+The site is a static build served by a Cloudflare Worker at https://warfarisk.com. The Worker is named `warfarisk` and serves the files in `dist/`.
 
 ## How it deploys
 
-`.github/workflows/pages.yml` runs on every push to `main`. It installs with Bun, runs `bun run build`, and publishes the `dist/` folder. `public/CNAME` contains `warfarisk.com`, and Vite copies it into `dist/` so the custom domain survives each deploy. You can also run the workflow by hand from the Actions tab.
+From the project folder:
 
-In the repository settings, Pages must use "GitHub Actions" as its source and `warfarisk.com` as its custom domain.
+```
+bun run build
+bunx wrangler deploy
+```
 
-## DNS records at IONOS
+`wrangler.jsonc` holds the Worker name, the `dist/` folder, and the two custom domains (`warfarisk.com` and `www.warfarisk.com`). You need to be logged in to the Cloudflare account that owns the domain (`bunx wrangler login`). Nothing deploys on a push to GitHub.
 
-Open IONOS, then Domains & SSL, then `warfarisk.com`, then DNS. The name servers can stay on the IONOS defaults. Change only these records.
+## DNS
 
-Delete the two records that point to IONOS's placeholder page:
+The domain is registered at IONOS, but its name servers point to Cloudflare:
 
-| Type | Name | Value to delete |
-| --- | --- | --- |
-| A | `@` | 74.208.236.197 |
-| AAAA | `@` | 2607:f1c0:100f:f000::200 |
+- `dalary.ns.cloudflare.com`
+- `denver.ns.cloudflare.com`
 
-Add GitHub Pages:
+DNS records are managed in the Cloudflare dashboard, under the `warfarisk.com` zone. The `warfarisk.com` and `www` records are created by the Worker's custom domains, so do not add records with those names by hand.
+
+**Keep the email records.** The domain uses IONOS mail. These records must stay, all set to "DNS only" (grey cloud):
 
 | Type | Name | Value |
 | --- | --- | --- |
-| A | `@` | 185.199.108.153 |
-| A | `@` | 185.199.109.153 |
-| A | `@` | 185.199.110.153 |
-| A | `@` | 185.199.111.153 |
-| AAAA | `@` | 2606:50c0:8000::153 |
-| AAAA | `@` | 2606:50c0:8001::153 |
-| AAAA | `@` | 2606:50c0:8002::153 |
-| AAAA | `@` | 2606:50c0:8003::153 |
-| CNAME | `www` | hasanbgit.github.io |
+| MX | `@` | `mx00.ionos.com` (priority 10) |
+| MX | `@` | `mx01.ionos.com` (priority 10) |
+| TXT | `@` | `"v=spf1 include:_spf-us.ionos.com ~all"` |
+| CNAME | `_dmarc` | `dmarc.ionos.com` |
+| CNAME | `s1-ionos._domainkey` | `s1.dkim.ionos.com` |
+| CNAME | `s2-ionos._domainkey` | `s2.dkim.ionos.com` |
+| CNAME | `autodiscover` | `adsredir.ionos.info` |
+| CNAME | `_domainconnect` | `_domainconnect.ionos.com` |
 
-**Leave the email records alone.** The domain has IONOS mail records (`MX` to `mx00.ionos.com` and `mx01.ionos.com`, and an SPF `TXT` record). Deleting them would stop email for the domain.
-
-These values are the ones in GitHub's documentation for apex domains: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+Deleting them would stop email for the domain.
 
 ## Checking it
 
 ```
-dig +short A warfarisk.com
-dig +short AAAA warfarisk.com
-dig +short CNAME www.warfarisk.com
+dig +short NS warfarisk.com
+dig +short MX warfarisk.com
+curl -sI https://warfarisk.com
 ```
 
-The first should list the four 185.199.x.153 addresses. DNS changes can take from a few minutes to a few hours. After GitHub finds the records it issues an HTTPS certificate, which can take up to an hour. Then turn on "Enforce HTTPS" in the Pages settings.
-
-## Optional: verify the domain
-
-To stop anyone else from claiming the domain on GitHub, verify `warfarisk.com` under your account settings, Pages, "Add a domain". GitHub gives a `TXT` record to add at IONOS.
+HTTPS certificates are issued and renewed by Cloudflare. After a DNS change, resolvers can keep the old answer for up to an hour.

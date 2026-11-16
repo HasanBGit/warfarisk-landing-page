@@ -6,7 +6,8 @@ All notable changes to the landing page are listed here. The format follows [Kee
 
 ### Added
 
-- GitHub Pages deployment on every push to `main`, with the custom domain warfarisk.com.
+- Deployment to a Cloudflare Worker with the custom domain warfarisk.com, set up in `wrangler.jsonc`.
+- A link preview image and Open Graph and Twitter card tags, so a pasted link shows a preview.
 - A deploy guide in `docs/DEPLOY.md`.
 
 ### Removed

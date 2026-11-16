@@ -28,7 +28,7 @@ Every number on the page lives in one of two files, each with the paper table or
 
 ## Live site
 
-The page is published at https://warfarisk.com from this repository with GitHub Pages. Every push to `main` builds and deploys it. See [docs/DEPLOY.md](docs/DEPLOY.md) for how the domain is set up.
+The page is published at https://warfarisk.com from a Cloudflare Worker that serves the built `dist/` folder. To update it, run `bun run build` and then `bunx wrangler deploy`. See [docs/DEPLOY.md](docs/DEPLOY.md) for how the domain is set up.
 
 ## Getting started
 
@@ -63,8 +63,9 @@ src/
   data/numbers.ts    every figure from the papers, with its source
   lib/               small helpers: hooks, status wording, smooth anchor scrolling
   styles.css         tokens and all styles
-public/              partner logos and the CNAME file for the custom domain
-.github/             the Pages deploy workflow, issue and pull request templates
+public/              partner logos and the link preview image
+.github/             issue and pull request templates
+wrangler.jsonc       Cloudflare Worker config and custom domains
 docs/                data sources, deploy guide, research notes
 ```
 
