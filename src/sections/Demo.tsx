@@ -4,7 +4,7 @@ import { Reveal } from "../components/Reveal";
 
 export function Demo() {
   return (
-    <section id="demo" className="section-tight demo" aria-labelledby="demo-title">
+    <section className="section-tight demo" aria-labelledby="demo-title">
       <div className="container">
         <Reveal className="center-head">
           <h2 id="demo-title">Here is the tool, with four real examples.</h2>

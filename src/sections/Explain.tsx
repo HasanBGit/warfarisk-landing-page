@@ -108,7 +108,7 @@ export function Explain() {
   };
 
   return (
-    <section id="explain" className="section-tight" aria-labelledby="explain-title">
+    <section className="section-tight" aria-labelledby="explain-title">
       <div className="container">
         <Reveal className="center-head">
           <h2 id="explain-title">Why a dose comes out as it does, and where the model runs short.</h2>

@@ -21,7 +21,7 @@ const papers = [
 
 export function Papers() {
   return (
-    <section id="papers" className="section-tight" aria-labelledby="papers-title">
+    <section className="section-tight" aria-labelledby="papers-title">
       <div className="container">
         <Reveal className="center-head">
           <h2 id="papers-title">Everything above is in two open papers.</h2>

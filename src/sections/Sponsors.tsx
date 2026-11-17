@@ -8,7 +8,7 @@ const partners = [
 
 export function Sponsors() {
   return (
-    <section id="sponsors" className="section-tight sponsors" aria-labelledby="sponsors-title">
+    <section className="section-tight sponsors" aria-labelledby="sponsors-title">
       <div className="container">
         <Reveal className="plain sponsors-block">
           <h2 id="sponsors-title">Supported by</h2>

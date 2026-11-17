@@ -18,9 +18,11 @@ export function installSmoothAnchors(): () => void {
     event.preventDefault();
 
     const offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
-    const from = window.scrollY;
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    const to = Math.min(Math.max(target ? target.getBoundingClientRect().top + from - offset : 0, 0), max);
+    // Sections below load as the reader comes near them, so the target can move while we scroll. Measure it again each time.
+    const targetY = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      return Math.min(Math.max(target ? target.getBoundingClientRect().top + window.scrollY - offset : 0, 0), max);
+    };
     const finish = () => {
       history.pushState(null, "", id ? `#${id}` : window.location.pathname + window.location.search);
       if (target) {
@@ -30,21 +32,27 @@ export function installSmoothAnchors(): () => void {
     };
 
     stop();
-    const distance = Math.abs(to - from);
-    if (calm.matches || distance < 4) {
-      window.scrollTo({ top: to, behavior: "instant" });
-      finish();
-      return;
-    }
-    const duration = Math.min(700, Math.max(350, distance * 0.3));
-    const start = performance.now();
-    const step = (now: number) => {
-      const t = Math.min((now - start) / duration, 1);
-      window.scrollTo({ top: from + (to - from) * easeInOut(t), behavior: "instant" });
-      if (t < 1) raf = requestAnimationFrame(step);
-      else finish();
+    const glide = (attempt: number) => {
+      const from = window.scrollY;
+      const to = targetY();
+      const distance = Math.abs(to - from);
+      if (calm.matches || distance < 4) {
+        window.scrollTo({ top: to, behavior: "instant" });
+        finish();
+        return;
+      }
+      const duration = Math.min(700, Math.max(350, distance * 0.3));
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min((now - start) / duration, 1);
+        window.scrollTo({ top: from + (to - from) * easeInOut(t), behavior: "instant" });
+        if (t < 1) raf = requestAnimationFrame(step);
+        else if (attempt < 2 && Math.abs(targetY() - window.scrollY) > 8) glide(attempt + 1);
+        else finish();
+      };
+      raf = requestAnimationFrame(step);
     };
-    raf = requestAnimationFrame(step);
+    glide(0);
   };
 
   document.addEventListener("click", onClick);

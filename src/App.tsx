@@ -1,28 +1,60 @@
-import { lazy, Suspense, useEffect, type ReactNode } from "react";
+import { lazy, useEffect } from "react";
 import { installSmoothAnchors } from "./lib/smoothAnchors";
+import { useScrollRestore } from "./lib/scrollRestore";
+import { LazySlot } from "./components/LazySlot";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { Hero } from "./sections/Hero";
 import { Problem } from "./sections/Problem";
 
-// Sections below the first screen load when the page needs them, so the first paint stays light.
-// Each keeps its own height while it loads, so the page does not jump when it arrives.
-const Pipeline = lazy(() => import("./sections/Pipeline").then((m) => ({ default: m.Pipeline })));
-const Findings = lazy(() => import("./sections/Findings").then((m) => ({ default: m.Findings })));
-const Calibration = lazy(() => import("./sections/Calibration").then((m) => ({ default: m.Calibration })));
-const Explain = lazy(() => import("./sections/Explain").then((m) => ({ default: m.Explain })));
-const Demo = lazy(() => import("./sections/Demo").then((m) => ({ default: m.Demo })));
-const Papers = lazy(() => import("./sections/Papers").then((m) => ({ default: m.Papers })));
-const Team = lazy(() => import("./sections/Team").then((m) => ({ default: m.Team })));
-const Sponsors = lazy(() => import("./sections/Sponsors").then((m) => ({ default: m.Sponsors })));
-const Closing = lazy(() => import("./sections/Closing").then((m) => ({ default: m.Closing })));
+// The first screen (Hero) and the section right under it (Problem) load with the page.
+// Everything below is its own chunk, fetched when the reader gets near it (see LazySlot),
+// and fetched quietly in the background once the browser is idle, so scrolling never waits.
+const load = {
+  pipeline: () => import("./sections/Pipeline").then((m) => ({ default: m.Pipeline })),
+  findings: () => import("./sections/Findings").then((m) => ({ default: m.Findings })),
+  calibration: () => import("./sections/Calibration").then((m) => ({ default: m.Calibration })),
+  explain: () => import("./sections/Explain").then((m) => ({ default: m.Explain })),
+  demo: () => import("./sections/Demo").then((m) => ({ default: m.Demo })),
+  papers: () => import("./sections/Papers").then((m) => ({ default: m.Papers })),
+  team: () => import("./sections/Team").then((m) => ({ default: m.Team })),
+  sponsors: () => import("./sections/Sponsors").then((m) => ({ default: m.Sponsors })),
+  closing: () => import("./sections/Closing").then((m) => ({ default: m.Closing })),
+};
 
-function Pending({ children, minHeight = 480 }: { children: ReactNode; minHeight?: number }) {
-  return <Suspense fallback={<div style={{ minHeight }} aria-hidden="true" />}>{children}</Suspense>;
-}
+const Pipeline = lazy(load.pipeline);
+const Findings = lazy(load.findings);
+const Calibration = lazy(load.calibration);
+const Explain = lazy(load.explain);
+const Demo = lazy(load.demo);
+const Papers = lazy(load.papers);
+const Team = lazy(load.team);
+const Sponsors = lazy(load.sponsors);
+const Closing = lazy(load.closing);
+
+// Section heights measured on a phone (390), a tablet (820) and a desktop (1440).
+// They only stand in until a section is on screen. After that the real height is remembered.
+const slots = [
+  { key: "pipeline", id: "pipeline", heights: [487, 937, 767], Section: Pipeline },
+  { key: "findings", id: "findings", heights: [1243, 1236, 951], Section: Findings },
+  { key: "calibration", id: "calibration", heights: [1182, 1320, 1283], Section: Calibration },
+  { key: "explain", id: "explain", heights: [907, 798, 877], Section: Explain },
+  { key: "demo", id: "demo", heights: [1561, 1448, 1150], Section: Demo },
+  { key: "papers", id: "papers", heights: [824, 747, 618], Section: Papers },
+  { key: "team", id: "team", heights: [1019, 1048, 795], Section: Team },
+  { key: "sponsors", id: "sponsors", heights: [365, 288, 349], Section: Sponsors },
+  { key: "closing", id: undefined, heights: [366, 313, 430], Section: Closing },
+] as const;
 
 export function App() {
+  useScrollRestore();
   useEffect(() => installSmoothAnchors(), []);
+
+  useEffect(() => {
+    const idle = window.requestIdleCallback ?? ((fn: () => void) => window.setTimeout(fn, 1500));
+    const handle = idle(() => Object.values(load).forEach((fetchChunk) => void fetchChunk().catch(() => undefined)));
+    return () => (window.cancelIdleCallback ? window.cancelIdleCallback(handle as number) : window.clearTimeout(handle as number));
+  }, []);
 
   return (
     <>
@@ -33,33 +65,11 @@ export function App() {
       <main id="main">
         <Hero />
         <Problem />
-        <Pending minHeight={900}>
-          <Pipeline />
-        </Pending>
-        <Pending minHeight={700}>
-          <Findings />
-        </Pending>
-        <Pending minHeight={900}>
-          <Calibration />
-        </Pending>
-        <Pending minHeight={600}>
-          <Explain />
-        </Pending>
-        <Pending minHeight={900}>
-          <Demo />
-        </Pending>
-        <Pending minHeight={420}>
-          <Papers />
-        </Pending>
-        <Pending minHeight={700}>
-          <Team />
-        </Pending>
-        <Pending minHeight={260}>
-          <Sponsors />
-        </Pending>
-        <Pending minHeight={260}>
-          <Closing />
-        </Pending>
+        {slots.map(({ key, id, heights, Section }) => (
+          <LazySlot key={key} slotKey={key} id={id} heights={heights}>
+            <Section />
+          </LazySlot>
+        ))}
       </main>
       <Footer />
     </>

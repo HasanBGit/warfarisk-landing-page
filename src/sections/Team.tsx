@@ -78,7 +78,7 @@ function Member({ person }: { person: Person }) {
 
 export function Team() {
   return (
-    <section id="team" className="section-tight team" aria-labelledby="team-title">
+    <section className="section-tight team" aria-labelledby="team-title">
       <div className="container">
         <Reveal className="center-head">
           <h2 id="team-title">Meet the team.</h2>

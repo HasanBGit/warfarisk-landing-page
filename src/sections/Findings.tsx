@@ -13,7 +13,7 @@ const stats = [
 
 export function Findings() {
   return (
-    <section id="findings" className="section-tight" aria-labelledby="findings-title">
+    <section className="section-tight" aria-labelledby="findings-title">
       <div className="container">
         <Reveal className="center-head">
           <h2 id="findings-title">The first result: genes help, but not enough yet.</h2>

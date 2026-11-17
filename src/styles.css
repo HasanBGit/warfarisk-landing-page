@@ -3702,3 +3702,17 @@ button,
     border-radius: var(--r-card);
   }
 }
+
+/* A section whose code did not load */
+
+.section-error {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+  padding-block: 48px;
+}
+
+.section-error p {
+  margin: 0;
+  color: var(--muted);
+}

@@ -48,7 +48,7 @@ export function Pipeline() {
   };
 
   return (
-    <section id="pipeline" className="section-tight" aria-labelledby="pipeline-title">
+    <section className="section-tight" aria-labelledby="pipeline-title">
       <div className="container">
         <Reveal className="center-head">
           <h2 id="pipeline-title">So we built a careful test, in nine steps.</h2>

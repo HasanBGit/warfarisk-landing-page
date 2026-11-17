@@ -6,7 +6,7 @@ import { coverage, mondrian } from "../data/numbers";
 
 export function Calibration() {
   return (
-    <section id="calibration" className="section-tight" aria-labelledby="calibration-title">
+    <section className="section-tight" aria-labelledby="calibration-title">
       <div className="container">
         <Reveal className="center-head">
           <h2 id="calibration-title">The tool says how sure it is. For some groups it is too sure.</h2>
