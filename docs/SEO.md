@@ -11,7 +11,7 @@ How warfarisk.com is made findable, and how to keep it that way. Everything here
 | `index.html` | The page, with structured data (JSON-LD) in the head: the project, the two papers, the team, the code |
 | `static-copy/index.html` | The same page as plain HTML. The Worker gives it to crawlers that do not run scripts (see below) |
 | `team/<slug>/index.html` | One page per person, with a profile structured-data block. This is what a search for a name finds |
-| `faq/index.html` | Questions and answers, with FAQ structured data. It is a separate page, not a section on the landing page |
+| `faq/index.html` | The same questions and answers on their own page, with FAQ structured data. The landing page has them too, as rows that open and close |
 | `sitemap.xml` | The home page, the questions page and every team page |
 | `llms.txt`, `llms-full.txt` | A plain summary for language models |
 

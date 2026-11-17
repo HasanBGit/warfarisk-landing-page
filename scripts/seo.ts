@@ -42,7 +42,7 @@ const write = (path: string, body: string) => {
 };
 const jsonLd = (data: unknown) => `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
 
-const ids = { website: `${SITE}/#website`, page: `${SITE}/#webpage`, project: `${SITE}/#project` };
+const ids = { website: `${SITE}/#website`, page: `${SITE}/#webpage`, project: `${SITE}/#project`, faq: `${SITE}/#faq` };
 const personUrl = (p: Person) => `${SITE}/team/${p.slug}/`;
 const personId = (p: Person) => `${personUrl(p)}#person`;
 const articleId = (key: string) => `${SITE}/#paper-${key}`;
@@ -142,6 +142,12 @@ function homeGraph() {
       ...papers.map((p) => paperNode(p.key)),
       { "@type": "SoftwareSourceCode", name: "WarfaRisk pipeline and prototype app", codeRepository: links.code, url: links.code, about: { "@id": ids.project } },
       { "@type": "SoftwareSourceCode", name: "WarfaRisk prototype interface", codeRepository: links.ui, url: links.ui, about: { "@id": ids.project } },
+      {
+        "@type": "FAQPage",
+        "@id": ids.faq,
+        isPartOf: { "@id": ids.page },
+        mainEntity: faq.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })),
+      },
     ],
   };
 }
@@ -458,7 +464,8 @@ const checks: [string, boolean][] = [
   ["crawler copy has exactly one h1", (snapshot.match(/<h1[ >]/g) ?? []).length === 1],
   ["crawler copy has no phone-only duplicates", !snapshot.includes('class="p-only"')],
   ["every FAQ answer is on the FAQ page", (() => { const html = readFileSync(`${DIST}faq/index.html`, "utf8"); return faq.every((f) => html.includes(esc(f.a))); })()],
-  ["the landing page has no FAQ markup", !home.includes("FAQPage")],
+  ["every FAQ question and answer is in the crawler copy of the landing page", (() => { const text = snapshot.replace(/<[^>]+>/g, " ").replace(/&#x27;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/\s+/g, " "); return faq.every((f) => text.includes(f.q) && text.includes(f.a.slice(0, 60))); })()],
+  ["the landing page carries FAQ markup that matches", home.includes('"@type":"FAQPage"')],
   ["structured data parses", (() => { try { JSON.parse(JSON.stringify(homeGraph())); return true; } catch { return false; } })()],
   ["every person has a page", everyone.every((p) => readFileSync(`${DIST}team/${p.slug}/index.html`, "utf8").includes(`<h1>${esc(displayName(p))}</h1>`))],
 ];

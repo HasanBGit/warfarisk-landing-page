@@ -8,6 +8,7 @@ import { Findings } from "./sections/Findings";
 import { Calibration } from "./sections/Calibration";
 import { Explain } from "./sections/Explain";
 import { Demo } from "./sections/Demo";
+import { Faq } from "./sections/Faq";
 import { Papers } from "./sections/Papers";
 import { Team } from "./sections/Team";
 import { Sponsors } from "./sections/Sponsors";
@@ -22,6 +23,7 @@ const sections = [
   ["calibration", Calibration],
   ["explain", Explain],
   ["demo", Demo],
+  ["faq", Faq],
   ["papers", Papers],
   ["team", Team],
   ["sponsors", Sponsors],

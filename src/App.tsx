@@ -16,6 +16,7 @@ const load = {
   calibration: () => import("./sections/Calibration").then((m) => ({ default: m.Calibration })),
   explain: () => import("./sections/Explain").then((m) => ({ default: m.Explain })),
   demo: () => import("./sections/Demo").then((m) => ({ default: m.Demo })),
+  faq: () => import("./sections/Faq").then((m) => ({ default: m.Faq })),
   papers: () => import("./sections/Papers").then((m) => ({ default: m.Papers })),
   team: () => import("./sections/Team").then((m) => ({ default: m.Team })),
   sponsors: () => import("./sections/Sponsors").then((m) => ({ default: m.Sponsors })),
@@ -27,6 +28,7 @@ const Findings = lazy(load.findings);
 const Calibration = lazy(load.calibration);
 const Explain = lazy(load.explain);
 const Demo = lazy(load.demo);
+const Faq = lazy(load.faq);
 const Papers = lazy(load.papers);
 const Team = lazy(load.team);
 const Sponsors = lazy(load.sponsors);
@@ -40,6 +42,7 @@ const slots = [
   { key: "calibration", id: "calibration", heights: [1182, 1320, 1283], Section: Calibration },
   { key: "explain", id: "explain", heights: [907, 798, 877], Section: Explain },
   { key: "demo", id: "demo", heights: [1561, 1448, 1150], Section: Demo },
+  { key: "faq", id: "faq", heights: [556, 580, 651], Section: Faq },
   { key: "papers", id: "papers", heights: [824, 747, 618], Section: Papers },
   { key: "team", id: "team", heights: [1019, 1048, 795], Section: Team },
   { key: "sponsors", id: "sponsors", heights: [365, 288, 349], Section: Sponsors },
