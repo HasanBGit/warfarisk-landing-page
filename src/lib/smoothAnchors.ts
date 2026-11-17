@@ -36,7 +36,7 @@ export function installSmoothAnchors(): () => void {
       finish();
       return;
     }
-    const duration = Math.min(900, Math.max(450, distance * 0.35));
+    const duration = Math.min(700, Math.max(350, distance * 0.3));
     const start = performance.now();
     const step = (now: number) => {
       const t = Math.min((now - start) / duration, 1);

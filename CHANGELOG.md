@@ -16,6 +16,10 @@ All notable changes to the landing page are listed here. The format follows [Kee
 - Hover styles now apply only on devices that can hover, so they no longer stick after a tap on a phone.
 - No grey flash on tap, and a press state on the small controls.
 - Shorter entrances and chart fills, capped stagger delays, and one stronger ease-out curve across the page.
+- Text entries (papers, pipeline steps, problem stats, team leads, notes) are grouped by space and one hairline instead of filled cards. Boxes are kept for charts, figures, the stat cards and the demo window.
+- Reduced motion now keeps short fades and colour changes and drops movement, instead of switching everything off.
+- The dose in the demo shows at once and no longer counts up through wrong numbers.
+- The menu icon and the sliding dots animate with transforms only.
 
 ### Removed
 

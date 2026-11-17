@@ -1,4 +1,3 @@
-import { CountUp } from "../components/CountUp";
 import { Collapse } from "../components/Disclosure";
 import { Icon } from "../components/Icon";
 import { coverage } from "../data/numbers";
@@ -48,7 +47,7 @@ export function StepDose({ c, busy, onBack, onNext }: { c: Case; busy: boolean; 
         <section className="panel">
           <p className="dose-label">Predicted weekly dose</p>
           <p className="dose-number">
-            <CountUp value={c.dose} decimals={1} />
+            {c.dose.toFixed(1)}
           </p>
           <p className="dose-unit">mg per week, about {(c.dose / 7).toFixed(1)} mg a day</p>
           <h3 className="h-sub range-title">90% range</h3>

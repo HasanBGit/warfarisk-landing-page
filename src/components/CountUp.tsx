@@ -18,7 +18,7 @@ export function CountUp({ value, decimals = 0 }: { value: number; decimals?: num
     const run = () => {
       const t0 = performance.now();
       const tick = (t: number) => {
-        const p = Math.min((t - t0) / 1100, 1);
+        const p = Math.min((t - t0) / 700, 1);
         setShown(value * (1 - (1 - p) ** 3));
         if (p < 1) raf = requestAnimationFrame(tick);
       };

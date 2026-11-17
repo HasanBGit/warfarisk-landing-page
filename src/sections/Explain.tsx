@@ -34,7 +34,7 @@ function PairAxis() {
 function PairRow({ row, idx }: { row: ShapRow; idx: number }) {
   const drop = row.feature === "VKORC1 (AA)";
   return (
-    <li className={drop ? "is-drop" : ""} style={{ "--b": pos(row.value), "--a": pos(row.black), "--i": idx } as CSSProperties}>
+    <li className={drop ? "is-drop" : ""} style={{ "--b": pos(row.value), "--a": pos(row.black), "--d": ((row.value - row.black) / SCALE) * 100, "--i": idx } as CSSProperties}>
       <span className="pairs-label">{row.feature}</span>
       <span className="pairs-plot" aria-hidden="true">
         <span className="pairs-link" />
