@@ -15,6 +15,7 @@ All notable changes to the landing page are listed here. The format follows [Kee
 
 - Hover styles now apply only on devices that can hover, so they no longer stick after a tap on a phone.
 - No grey flash on tap, and a press state on the small controls.
+- Shorter entrances and chart fills, capped stagger delays, and one stronger ease-out curve across the page.
 
 ### Removed
 

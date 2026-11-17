@@ -46,7 +46,7 @@
   --font-display: "Inter", system-ui, -apple-system, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
   --nav-height: 68px;
-  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 *,
@@ -494,7 +494,7 @@ ol {
 .reveal {
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.6s ease, transform 0.6s var(--ease);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
 }
 
 .reveal.is-shown {
@@ -547,19 +547,19 @@ ol {
 }
 
 .hero-copy > * {
-  animation: rise 0.9s var(--ease) both;
+  animation: rise 0.6s var(--ease) both;
 }
 
 .hero-copy > :nth-child(2) {
-  animation-delay: 0.08s;
+  animation-delay: 0.06s;
 }
 
 .hero-copy > :nth-child(3) {
-  animation-delay: 0.16s;
+  animation-delay: 0.12s;
 }
 
 .hero-copy > :nth-child(4) {
-  animation-delay: 0.24s;
+  animation-delay: 0.18s;
 }
 
 @keyframes rise {
@@ -1151,8 +1151,8 @@ ol {
 .stagger-item {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 0.5s ease, transform 0.5s var(--ease), background-color 0.2s ease;
-  transition-delay: calc(var(--i, 0) * 70ms);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), background-color 0.2s ease;
+  transition-delay: calc(var(--i, 0) * 30ms);
 }
 
 .is-shown .stagger-item {
@@ -1698,7 +1698,7 @@ ol {
 .split-gene {
   color: #fff;
   background: var(--accent);
-  animation: reveal-x 0.7s var(--ease) 0.15s both;
+  animation: reveal-x 0.45s var(--ease) 0.05s both;
 }
 
 .split-clin {
@@ -1878,7 +1878,7 @@ ol {
   margin-top: -1.5px;
   background: var(--accent-line);
   border-radius: 2px;
-  animation: fade-in 0.4s ease calc(var(--i, 0) * 70ms + 0.75s) both;
+  animation: fade-in 0.3s var(--ease) calc(var(--i, 0) * 30ms + 0.35s) both;
 }
 
 .pairs-pt {
@@ -1888,7 +1888,7 @@ ol {
 }
 
 .pairs-move {
-  animation: dot-move 0.8s var(--ease) calc(var(--i, 0) * 70ms + 0.25s) both;
+  animation: dot-move 0.5s var(--ease) calc(var(--i, 0) * 30ms + 0.1s) both;
 }
 
 @keyframes dot-move {
@@ -2083,7 +2083,7 @@ ol {
 
 .app-body {
   overflow: hidden;
-  transition: height 0.4s var(--ease);
+  transition: height 0.3s var(--ease);
 }
 
 .app-inner {
@@ -2091,11 +2091,11 @@ ol {
 }
 
 .screen.dir-fwd {
-  animation: slide-fwd 0.45s var(--ease) both;
+  animation: slide-fwd 0.3s var(--ease) both;
 }
 
 .screen.dir-back {
-  animation: slide-back 0.45s var(--ease) both;
+  animation: slide-back 0.3s var(--ease) both;
 }
 
 .screen.dir-none {
@@ -2105,14 +2105,14 @@ ol {
 @keyframes slide-fwd {
   from {
     opacity: 0;
-    transform: translateX(28px);
+    transform: translateX(20px);
   }
 }
 
 @keyframes slide-back {
   from {
     opacity: 0;
-    transform: translateX(-28px);
+    transform: translateX(-20px);
   }
 }
 
@@ -2295,7 +2295,7 @@ ol {
   bottom: 0;
   background: var(--accent-line);
   border-radius: 999px;
-  animation: reveal-x 0.7s var(--ease) 0.15s both;
+  animation: reveal-x 0.45s var(--ease) 0.05s both;
 }
 
 .interval-dose {
@@ -2306,7 +2306,7 @@ ol {
   margin-left: -2px;
   background: var(--accent);
   border-radius: 2px;
-  animation: fade-in 0.4s ease 0.55s both;
+  animation: fade-in 0.3s var(--ease) 0.3s both;
 }
 
 .interval-ends {
@@ -2439,13 +2439,13 @@ ol {
 .why-bars .up .why-fill {
   background: var(--coral);
   border-radius: 0 7px 7px 0;
-  animation: reveal-x 0.6s var(--ease) calc(var(--i, 0) * 70ms + 0.15s) both;
+  animation: reveal-x 0.4s var(--ease) calc(var(--i, 0) * 30ms + 0.05s) both;
 }
 
 .why-bars .down .why-fill {
   background: var(--accent);
   border-radius: 7px 0 0 7px;
-  animation: reveal-x-rev 0.6s var(--ease) calc(var(--i, 0) * 70ms + 0.15s) both;
+  animation: reveal-x-rev 0.4s var(--ease) calc(var(--i, 0) * 30ms + 0.05s) both;
 }
 
 .why-value {
@@ -3193,7 +3193,7 @@ ol {
   grid-template-rows: 0fr;
   opacity: 0;
   visibility: hidden;
-  transition: grid-template-rows 0.35s var(--ease), opacity 0.25s ease, visibility 0s linear 0.35s;
+  transition: grid-template-rows 0.3s var(--ease), opacity 0.25s ease, visibility 0s linear 0.3s;
 }
 
 .disc.is-open > .disc-panel {
@@ -3653,4 +3653,17 @@ label {
 .stepper-btn:active,
 .round-btn:active {
   transform: scale(0.97);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+.button,
+button,
+.seg-track label,
+.footer-links a {
+  -webkit-user-select: none;
+  user-select: none;
 }
