@@ -1,5 +1,5 @@
 /* WarfaRisk landing page.
-   Colours and type come from the prototype app: a warm paper page, graphite text, one deep teal accent, Inter.
+   Colours and type come from the prototype app: a warm paper page, graphite text, one deep berry accent, Inter.
    Green, amber and red only keep the meaning they have in the prototype (status). Coral means a dose pushed up.
    Muted text and green text are one step darker than in the app so small text passes WCAG AA. */
 
@@ -11,7 +11,7 @@
   --muted: #5d5458;
   --line: #e5dce0;
   --line-soft: #f0e9ec;
-  --neutral-bar: #9a9095;
+  --neutral-bar: #8f868b;
   --accent: #8a2d5c;
   --accent-hover: #6f2249;
   --accent-soft: #f6e9ef;
@@ -22,22 +22,22 @@
   --amber-bg: #fff6e0;
   --amber-line: #f5dfa3;
   --amber-text: #80590a;
-  --amber-mark: #d97706;
+  --amber-mark: #ce7106;
   --red-bg: #fdebec;
   --red-line: #f3c1c4;
   --red-text: #c3383f;
   --red-mark: #c3383f;
   --coral: #dc5a50;
-  --note-bg: #f6e9ef;
-  --note-line: #e8c9d8;
-  --note-text: #6f2249;
-  --night: #1e1519;
+  --note-bg: var(--accent-soft);
+  --note-line: var(--accent-line);
+  --note-text: var(--accent-hover);
+  --night: var(--ink);
   --night-text: #f6eef1;
   --night-muted: #b9a9b0;
   --night-dim: #3d2f36;
   --night-lit: #f2a5c0;
   --night-mid: #d46a96;
-  --focus: #8a2d5c;
+  --focus: var(--accent);
   --radius: 8px;
   --r-card: 16px;
   --r-panel: 28px;
@@ -522,7 +522,7 @@ ol {
 
 .hero-panel {
   padding: calc(var(--nav-height) + clamp(1.5rem, 3vw, 3rem)) 0 clamp(2.5rem, 5vw, 4rem);
-  background: #f6ecf0;
+  background: var(--accent-soft);
   border-radius: var(--r-panel);
 }
 
@@ -709,7 +709,7 @@ ol {
 .pillbox {
   position: relative;
   width: 100%;
-  background: #fbf6f8;
+  background: var(--surface-alt);
   border-radius: var(--r-card);
   overflow: hidden;
 }

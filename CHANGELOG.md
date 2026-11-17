@@ -13,6 +13,7 @@ All notable changes to the landing page are listed here. The format follows [Kee
 
 ### Changed
 
+- Colours: near-duplicate pinks and the two dark plums are merged into the shared tonal ramp, notes and focus use the accent tokens, and the neutral bar and amber status mark are slightly deeper so chart marks reach 3:1 contrast. An automated check finds no text contrast failures on desktop or phone.
 - Sections below the first screen now mount only when the reader gets near them, each held in a slot that keeps the real height. A refresh or a link such as `/#team` lands in the right place with no layout shift, and a section that fails to load shows a message with a reload button instead of a blank page.
 - Hover styles now apply only on devices that can hover, so they no longer stick after a tap on a phone.
 - No grey flash on tap, and a press state on the small controls.
