@@ -5,7 +5,7 @@ import { useReducedMotion } from "../lib/hooks";
 export function CountUp({ value, decimals = 0 }: { value: number; decimals?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const calm = useReducedMotion();
-  const [shown, setShown] = useState(calm ? value : 0);
+  const [shown, setShown] = useState(calm || typeof window === "undefined" ? value : 0);
 
   useEffect(() => {
     if (calm) {

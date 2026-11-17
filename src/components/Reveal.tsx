@@ -5,7 +5,8 @@ import { useReducedMotion } from "../lib/hooks";
 export function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
-  const [shown, setShown] = useState(false);
+  // With no browser (the prerendered copy) everything is shown, so nothing is hidden waiting for a scroll.
+  const [shown, setShown] = useState(typeof window === "undefined");
 
   useEffect(() => {
     const element = ref.current;

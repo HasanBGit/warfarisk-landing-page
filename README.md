@@ -29,7 +29,7 @@ Every number on the page lives in one of two files, each with the paper table or
 
 ## Live site
 
-The page is published at https://warfarisk.com from a Cloudflare Worker that serves the built `dist/` folder. To update it, run `bun run build` and then `bunx wrangler deploy`. See [docs/DEPLOY.md](docs/DEPLOY.md) for how the domain is set up.
+The page is published at https://warfarisk.com from a Cloudflare Worker that serves the built `dist/` folder. To update it, run `bun run build` and then `bunx wrangler deploy`. See [docs/DEPLOY.md](docs/DEPLOY.md) for how the domain is set up, and [docs/SEO.md](docs/SEO.md) for how the site is made findable by search engines and AI answer engines.
 
 ## Getting started
 

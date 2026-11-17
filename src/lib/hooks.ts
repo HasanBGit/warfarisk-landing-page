@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
+  // On the server there is no screen, so the desktop layout is the answer.
+  const [matches, setMatches] = useState(() => typeof window !== "undefined" && window.matchMedia(query).matches);
 
   useEffect(() => {
     const media = window.matchMedia(query);
@@ -22,6 +23,7 @@ let webglSupport: boolean | null = null;
 // Checked once, and the test context is released straight away so it does not count against
 // the browser's limit on live WebGL contexts.
 export function hasWebGL(): boolean {
+  if (typeof document === "undefined") return false;
   if (webglSupport !== null) return webglSupport;
   try {
     const canvas = document.createElement("canvas");
