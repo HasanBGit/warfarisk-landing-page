@@ -9,6 +9,7 @@ const links = [
   { href: "#calibration", label: "Who it misses" },
   { href: "#demo", label: "Try it" },
   { href: "#papers", label: "Papers" },
+  { href: "#team", label: "Team" },
 ];
 
 export function Footer() {

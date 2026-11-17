@@ -8,7 +8,13 @@ All notable changes to the landing page are listed here. The format follows [Kee
 
 - Deployment to a Cloudflare Worker with the custom domain warfarisk.com, set up in `wrangler.jsonc`.
 - A link preview image and Open Graph and Twitter card tags, so a pasted link shows a preview.
+- A Team section: the project leads on top, then the team, with photos, email for the leads and LinkedIn links.
 - A deploy guide in `docs/DEPLOY.md`.
+
+### Changed
+
+- Hover styles now apply only on devices that can hover, so they no longer stick after a tap on a phone.
+- No grey flash on tap, and a press state on the small controls.
 
 ### Removed
 

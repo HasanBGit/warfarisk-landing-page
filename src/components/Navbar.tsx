@@ -8,6 +8,7 @@ const links = [
   { id: "calibration", label: "Who it misses" },
   { id: "demo", label: "Try it" },
   { id: "papers", label: "Papers" },
+  { id: "team", label: "Team" },
 ];
 
 // The section in the middle of the screen, so the nav can show where the reader is.

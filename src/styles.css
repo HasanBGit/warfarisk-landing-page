@@ -223,20 +223,28 @@ ol {
   margin: 0;
 }
 
-.button:hover .btn-icon-down {
+@media (hover: hover) and (pointer: fine) {
+  .button:hover .btn-icon-down {
   transform: translateY(2px);
 }
+}
 
-.button:hover .icon[data-icon="right"] {
+@media (hover: hover) and (pointer: fine) {
+  .button:hover .icon[data-icon="right"] {
   transform: translateX(3px);
 }
-
-.button:hover .icon[data-icon="left"] {
-  transform: translateX(-3px);
 }
 
-.button:hover .icon[data-icon="reset"] {
+@media (hover: hover) and (pointer: fine) {
+  .button:hover .icon[data-icon="left"] {
+  transform: translateX(-3px);
+}
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover .icon[data-icon="reset"] {
   transform: rotate(-180deg);
+}
 }
 
 .button-primary {
@@ -244,8 +252,10 @@ ol {
   color: #fff;
 }
 
-.button-primary:hover {
+@media (hover: hover) and (pointer: fine) {
+  .button-primary:hover {
   background: var(--accent-hover);
+}
 }
 
 .button-ghost {
@@ -254,9 +264,11 @@ ol {
   border-color: var(--neutral-bar);
 }
 
-.button-ghost:hover {
+@media (hover: hover) and (pointer: fine) {
+  .button-ghost:hover {
   background: var(--tint);
   border-color: var(--ink);
+}
 }
 
 .actions {
@@ -450,9 +462,11 @@ ol {
     font-size: 0.97rem;
   }
 
+    @media (hover: hover) and (pointer: fine) {
   .nav-link:hover::after {
     transform: scaleX(1);
   }
+}
 
   .nav-cta {
     min-height: 40px;
@@ -669,8 +683,10 @@ ol {
   transition: color 0.2s ease;
 }
 
-.seg-track label:hover {
+@media (hover: hover) and (pointer: fine) {
+  .seg-track label:hover {
   color: var(--ink);
+}
 }
 
 .seg-track label.is-on {
@@ -1628,9 +1644,15 @@ ol {
   transition: opacity 0.25s ease;
 }
 
-.tablist button:hover,
 .tablist button.is-on {
   opacity: 1;
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+  .tablist button:hover {
+  opacity: 1;
+}
 }
 
 .tablist button:focus-visible {
@@ -1948,8 +1970,10 @@ ol {
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.case-btn:hover {
+@media (hover: hover) and (pointer: fine) {
+  .case-btn:hover {
   color: var(--ink);
+}
 }
 
 .case-btn.is-on {
@@ -2465,8 +2489,10 @@ ol {
   transition: transform 0.2s var(--ease);
 }
 
-.links a:hover .icon {
+@media (hover: hover) and (pointer: fine) {
+  .links a:hover .icon {
   transform: translateX(3px);
+}
 }
 
 .skeleton {
@@ -2596,8 +2622,10 @@ ol {
   transition: color 0.2s ease;
 }
 
-.partners a:hover {
+@media (hover: hover) and (pointer: fine) {
+  .partners a:hover {
   color: var(--accent);
+}
 }
 
 .partner-logo {
@@ -2655,8 +2683,10 @@ ol {
   background: var(--paper);
 }
 
-.button-light:hover {
+@media (hover: hover) and (pointer: fine) {
+  .button-light:hover {
   background: #fff;
+}
 }
 
 .button-outline-light {
@@ -2664,9 +2694,11 @@ ol {
   border-color: var(--night-muted);
 }
 
-.button-outline-light:hover {
+@media (hover: hover) and (pointer: fine) {
+  .button-outline-light:hover {
   border-color: var(--night-text);
   background: rgba(255, 255, 255, 0.08);
+}
 }
 
 /* Footer */
@@ -2707,8 +2739,10 @@ ol {
   transition: background-size 0.25s ease;
 }
 
-.footer-links a:hover {
+@media (hover: hover) and (pointer: fine) {
+  .footer-links a:hover {
   background-size: 100% 1px;
+}
 }
 
 /* Reduced motion: no animation, no transitions, nothing pinned  */
@@ -2971,8 +3005,10 @@ ol {
   cursor: default;
 }
 
-.round-btn:hover:not(:disabled) {
+@media (hover: hover) and (pointer: fine) {
+  .round-btn:hover:not(:disabled) {
   background: var(--tint);
+}
 }
 
 /* Phone: the coverage chart, grouped by result */
@@ -3390,4 +3426,231 @@ ol {
   margin: 0 0 16px;
   color: var(--muted);
   font-size: 0.9375rem;
+}
+
+/* Team */
+
+.team-group {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.leads,
+.members {
+  margin: 0 0 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.leads {
+  display: grid;
+  gap: 16px;
+}
+
+.lead-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-content: start;
+  align-items: start;
+  padding: 24px;
+  background: var(--tint);
+  border-radius: var(--r-card);
+}
+
+.avatar {
+  display: block;
+  flex: none;
+  object-fit: cover;
+  background: var(--line-soft);
+  border-radius: 50%;
+}
+
+.avatar-initials {
+  display: grid;
+  place-items: center;
+  color: var(--accent-hover);
+  background: var(--accent-soft);
+  font-size: 1.375rem;
+  font-weight: 600;
+}
+
+.avatar-lead {
+  width: 72px;
+  height: 72px;
+}
+
+.avatar-member {
+  width: 72px;
+  height: 72px;
+}
+
+.lead-body {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.person-name {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.person-role {
+  margin: 0;
+  color: var(--accent-hover);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.person-detail {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.person-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.person-mail {
+  display: inline-flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding-block: 11px;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+
+.person-mail .icon {
+  margin-top: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .person-mail:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+  }
+}
+
+.person-social {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .person-social:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+.person-mail:focus-visible,
+.person-social:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.members {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 16px;
+}
+
+.member {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 12px;
+  text-align: center;
+}
+
+.member .person-name {
+  font-size: 1rem;
+}
+
+@media (min-width: 860px) {
+  .leads {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .lead-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 28px;
+    border-radius: var(--r-card);
+  }
+
+  .avatar-lead {
+    width: 104px;
+    height: 104px;
+  }
+
+  .avatar-member {
+    width: 88px;
+    height: 88px;
+  }
+
+  .avatar-initials {
+    font-size: 1.75rem;
+  }
+
+  .members {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 24px;
+    margin-bottom: 0;
+  }
+}
+
+/* Touch: no grey flash on tap, no tap delay, and a press state for small controls (set on :active, so it works for touch too) */
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button,
+label {
+  touch-action: manipulation;
+}
+
+.person-social,
+.case-btn,
+.seg-track label,
+.tablist button,
+.stepper-btn,
+.round-btn {
+  transition-property: transform, color, background-color, border-color, opacity, box-shadow;
+}
+
+.person-social:active,
+.case-btn:active,
+.seg-track label:active,
+.tablist button:active,
+.stepper-btn:active,
+.round-btn:active {
+  transform: scale(0.97);
 }

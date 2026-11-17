@@ -16,6 +16,7 @@ A one-page site that explains two open papers on warfarin dose prediction and le
 | Why a dose comes out as it does | Which inputs push the dose up or down, and how that changes for patients labelled Black. |
 | Try it | A three-screen demo (Patient, Dose, Why) with four fixed examples. |
 | Papers | Links to the two papers. |
+| Team | The three project leads first, with email for the leads, then the team. A LinkedIn icon shows for anyone with an address in `src/data/team.ts`. |
 
 ## Where the numbers come from
 
@@ -63,7 +64,7 @@ src/
   data/numbers.ts    every figure from the papers, with its source
   lib/               small helpers: hooks, status wording, smooth anchor scrolling
   styles.css         tokens and all styles
-public/              partner logos and the link preview image
+public/              partner logos, team photos and the link preview image
 .github/             issue and pull request templates
 wrangler.jsonc       Cloudflare Worker config and custom domains
 docs/                data sources, deploy guide, research notes

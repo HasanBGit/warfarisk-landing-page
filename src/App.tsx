@@ -13,6 +13,7 @@ const Calibration = lazy(() => import("./sections/Calibration").then((m) => ({ d
 const Explain = lazy(() => import("./sections/Explain").then((m) => ({ default: m.Explain })));
 const Demo = lazy(() => import("./sections/Demo").then((m) => ({ default: m.Demo })));
 const Papers = lazy(() => import("./sections/Papers").then((m) => ({ default: m.Papers })));
+const Team = lazy(() => import("./sections/Team").then((m) => ({ default: m.Team })));
 const Sponsors = lazy(() => import("./sections/Sponsors").then((m) => ({ default: m.Sponsors })));
 const Closing = lazy(() => import("./sections/Closing").then((m) => ({ default: m.Closing })));
 
@@ -49,6 +50,9 @@ export function App() {
         </Pending>
         <Pending minHeight={420}>
           <Papers />
+        </Pending>
+        <Pending minHeight={700}>
+          <Team />
         </Pending>
         <Pending minHeight={260}>
           <Sponsors />
